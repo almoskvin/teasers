@@ -70,7 +70,7 @@ public class ArraySortComparator {
                     return -1;
                 }
             }
-            return Integer.compare(o2.name.length(), o1.name.length());
+            return Integer.compare(o1.name.length(), o2.name.length());
         }
     }
 }
