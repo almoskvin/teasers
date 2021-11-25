@@ -45,10 +45,20 @@ public class StringLongestPalindrome {
     private static boolean isPalindrome(String s) {
         int forward = 0;
         int backward = s.length() - 1;
-        while (backward > forward) {
+        while (backward > forward) { // inspect the string from the both ends one-by-one char
             final char charF = s.charAt(forward++);
             final char charB = s.charAt(backward--);
             if (charB != charF) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isPalindromeFromInt(int x) {
+        final String xStr = String.valueOf(x); //Follow up: Could you solve it without converting the integer to a string?
+        for (int i = 0; i < xStr.length() / 2; i++) {
+            if (xStr.charAt(i) != xStr.charAt(xStr.length() - 1 - i)) {
                 return false;
             }
         }
