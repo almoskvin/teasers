@@ -29,17 +29,16 @@ public class StringLongestPalindrome {
         if (s.length() == 1) {
             return s;
         }
-        String longestP = "";
-        for (int i = 1; i <= s.length(); i++) {
-            String seq = s.substring(0, i);
-            for (int j = 0; j < seq.length(); j++) {
-                String subseq = seq.substring(j);
-                if (isPalindrome(subseq) && (longestP.length() < subseq.length())) {
-                    longestP = subseq;
+        // goes from longer substrings to the shorter ones so the first palindrome found will be our guys
+        for (int i = s.length(); i >= 0; i--) {
+            for (int j = 0; j <= s.length() - i; j++) {
+                String seq = s.substring(j, j + i);
+                if (isPalindrome(seq)) {
+                    return seq;
                 }
             }
         }
-        return longestP;
+        return "";
     }
 
     private static boolean isPalindrome(String s) {
